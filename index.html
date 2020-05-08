@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+  <meta charset='UTF-8'>
+  <title>JS</title>
+</head>
+<body>
+  <h1>Проект КНБ</h1>
+  <h2>Пожалуйста, откройте консоль</h2>
+</body>
+<script>
+  function computerPlay() {
+    let list = ['КАМЕНЬ', 'НОЖНИЦЫ', 'БУМАГА'];
+    return list[Math.floor(Math.random() * 3)];
+  };
+  function playRound(playerSelection, computerSelection) {
+   const p = playerSelection.toUpperCase();
+   const c = computerSelection;
+   if (p == 'КАМЕНЬ' && c == 'КАМЕНЬ') {
+     const result = 'Ничья! Камень не бьет камень!';
+     return result;
+   } else if (p == 'НОЖНИЦЫ' && c == 'НОЖНИЦЫ') {
+     const result = 'Ничья! Ножницы не бьют ножницы!';
+     return result;
+   } else if (p == 'БУМАГА' && c == 'БУМАГА') {
+     const result = 'Ничья! Бумага не бьет бумагу!';
+     return result;
+   } else if (p == 'КАМЕНЬ' && c == 'НОЖНИЦЫ') {
+     const result = 'Вы выиграли! Камень бьет ножницы!';
+     return result;
+   } else if (p == 'КАМЕНЬ' && c == 'БУМАГА') {
+     const result = 'Вы проиграли! Бумага бьет камень!';
+     return result;
+   } else if (p == 'НОЖНИЦЫ' && c == 'КАМЕНЬ') {
+     const result = 'Вы проиграли! Камень бьет ножницы!';
+     return result;
+   } else if (p == 'НОЖНИЦЫ' && c == 'БУМАГА') {
+     const result = 'Вы выиграли! Ножницы бьют бумагу!';
+     return result;
+   } else if (p == 'БУМАГА' && c == 'КАМЕНЬ') {
+     const result = 'Вы выиграли! Бумага бьет камень!';
+     return result;
+   } else if (p == 'БУМАГА' && c == 'НОЖНИЦЫ') {
+     const result = 'Вы проиграли! Ножницы бьют бумагу!';
+     return result;
+   };
+  };
+  function game() {
+    let int_p = 0;
+    let int_c = 0;
+    for (var i = 0; i != 5; i++) {
+      const test = prompt('Выберите: камень, ножницы и бумага');
+      const result = playRound(test, computerPlay());
+      console.log(result);
+      if (result.slice(0, 13) == 'Вы выиграли! ') {
+        int_p = int_p + 1;
+      } else if (result.slice(0, 13) == 'Вы проиграли!') {
+        int_c = int_c + 1;
+      }
+    };
+    if (int_p == int_c) {
+      console.log('Пользователь: ' + int_p + '\n' + 'Компьютер: ' + int_c + '\n\n' + 'Ничья!');
+    } else if (int_p > int_c) {
+      console.log('Пользователь: ' + int_p + '\n' + 'Компьютер: ' + int_c + '\n\n' + 'Вы выиграли!');
+    } else if (int_p < int_c) {
+      console.log('Пользователь: ' + int_p + '\n' + 'Компьютер: ' + int_c + '\n\n' + 'Вы проиграли!');
+    }
+  };
+  game();
+</script>
+</html>
